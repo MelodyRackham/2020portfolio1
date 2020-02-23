@@ -1,7 +1,19 @@
 <?php
-if($_POST["message"]) {
-    mail("melody.rackham@gmail.com", "Form to email message", $_POST["message"], "From: an@email.address");
+
+if($_POST["submit"]) {
+    $recipient="melody.rackham@gmail.com";
+    $subject="Form to email message";
+    $sender=$_POST["sender"];
+    $senderEmail=$_POST["senderEmail"];
+    $message=$_POST["message"];
+
+    $mailBody="Name: $sender\nEmail: $senderEmail\n\n$message";
+
+    mail($recipient, $subject, $mailBody, "From: $sender <$senderEmail>");
+
+    $thankYou="<p>Thank you! Your message has been sent.</p>";
 }
+
 ?>
 
 <!DOCTYPE HTML>
@@ -375,16 +387,19 @@ if($_POST["message"]) {
 
 			<h2>Contact Me!</h2>
 
-			<form action="mailto:melody.rackham@gmail.com" method="post" enctype="text/plain">
-				Name:<br>
-				<input type="text" name="name"><br>
-				E-mail:<br>
-				<input type="text" name="mail"><br>
-				Comment:<br>
-				<input type="text" name="comment" size="50"><br><br>
-				<input type="submit" value="Send">
-				<input type="reset" value="Reset">
+			<form method="post" action="iindex.php">
+				<label>Name:</label>
+				<input name="sender">
+
+				<label>Email address:</label>
+				<input name="senderEmail">
+
+				<label>Message:</label>
+				<textarea rows="5" cols="20" name="message"></textarea>
+
+				<input type="submit" name="submit">
 			</form>
+
 
 			<footer class="wrapper style1 align-center">
 				<div class="inner">
