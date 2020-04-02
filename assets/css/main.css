@@ -8557,3 +8557,8 @@ body.is-preload .items.onload-fade-in > * > .inner {
 #wrapper.divided > .invert:first-child {
   box-shadow: none !important;
 }
+
+form {
+  width: 50% !important;
+  margin: 0 auto !important;
+}
